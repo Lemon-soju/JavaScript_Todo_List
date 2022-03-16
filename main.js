@@ -81,9 +81,6 @@ function render(){
                 </div>
             </div>`;
         }
-  
-
-
     }  
 
     document.getElementById("task-board").innerHTML = resultHTML;
@@ -101,16 +98,13 @@ function toggleComplete(id){
 
 function deleteTask(id){
     for(let i=0;i<taskList.length;i++){
-
-        // 진행중, 끝남 태그에서 delete를 누르면 바로 UI에 적용하기 위함
-        if(filterList[i].id == id ){
-            filterList.splice(i,1);
+        if(mode == "ongoing" || mode == "done"){ // 진행중 끝남에서 바로 delete를 적용
+            filterList.splice(i,1);            
         }
-        if(taskList[i].id == id ){ 
+        if(taskList[i].id == id ){
             taskList.splice(i,1);
             break;
         }
-
     }
     render();
 }
